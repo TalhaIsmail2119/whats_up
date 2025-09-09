@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import '../utils/colors.dart';
-import '../widgets/chat_list.dart';
-import '../widgets/contacts_list.dart';
-import '../widgets/web_chat_appbar.dart';
-import '../widgets/web_profile_bar.dart';
-import '../widgets/web_search_bar.dart';
+
+import '../../common/utils/colors.dart';
+import '../../common/widgets/chat_list.dart';
+import '../../common/widgets/contacts_list.dart';
+import '../../common/widgets/web_chat_appbar.dart';
+import '../../common/widgets/web_profile_bar.dart';
+import '../../common/widgets/web_search_bar.dart';
+
 
 class WebLayoutScreen extends StatelessWidget {
   const WebLayoutScreen({Key? key}) : super(key: key);
@@ -28,11 +30,11 @@ class WebLayoutScreen extends StatelessWidget {
           ),
           Container(
             width: MediaQuery.of(context).size.width * 0.75,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               border: Border(
                 left: BorderSide(color: dividerColor),
               ),
-              image: DecorationImage(
+              image: const DecorationImage(
                 image: AssetImage(
                   "assets/backgroundImage.png",
                 ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whats_up/widgets/sender_message_card.dart';
+import 'package:whats_up/common/widgets/sender_message_card.dart';
 import '../utils/info.dart';
 import 'my_message_card.dart';
 

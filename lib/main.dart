@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:whats_up/screens/mobile_layout_screen.dart';
-import 'package:whats_up/utils/colors.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import 'package:whats_up/features/landing/presentation/landing_screen.dart';
+import 'common/utils/colors.dart';
+import 'core/firebase_options.dart';
+
+
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +25,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: backgroundColor,
       ),
-      home: MobileLayoutScreen(),
+      //home: MobileLayoutScreen(),
+      home: LandingScreen(),
     );
   }
 }

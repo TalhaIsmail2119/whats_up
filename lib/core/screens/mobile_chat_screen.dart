@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../utils/colors.dart';
-import '../utils/info.dart';
-import '../widgets/chat_list.dart';
+import '../../common/utils/colors.dart';
+import '../../common/utils/info.dart';
+import '../../common/widgets/chat_list.dart';
 
 
 class MobileChatScreen extends StatelessWidget {

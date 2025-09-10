@@ -25,6 +25,9 @@ class MyApp extends StatelessWidget {
       title: 'Whats UP',
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: backgroundColor,
+        appBarTheme: const AppBarTheme(
+          color: appBarColor,
+        ),
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
       //home: MobileLayoutScreen(),

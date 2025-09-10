@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:whats_up/features/landing/presentation/landing_screen.dart';
 import 'common/utils/colors.dart';
 import 'core/firebase_options.dart';
+import 'core/router.dart';
 
 
 
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: backgroundColor,
       ),
+      onGenerateRoute: (settings) => generateRoute(settings),
       //home: MobileLayoutScreen(),
       home: LandingScreen(),
     );

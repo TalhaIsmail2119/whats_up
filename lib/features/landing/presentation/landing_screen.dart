@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:whats_up/common/widgets/custom_button_widgets.dart';
 import 'package:gap/gap.dart';
-
 import '../../../common/utils/colors.dart';
+import '../../auth/presentation/log_in_screen.dart';
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({Key? key}) : super(key: key);
+
+  void navigateToLoginScreen(BuildContext context) {
+    Navigator.pushNamed(context, LogInScreen.routeName);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +49,7 @@ class LandingScreen extends StatelessWidget {
               width: size.width * 0.75,
               child: CustomButtonWidget(
                 text: 'AGREE AND CONTINUE',
-                onPressed: (){}
+                onPressed: () => navigateToLoginScreen(context),
               ),
             ),
           ],

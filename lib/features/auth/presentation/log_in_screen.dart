@@ -1,22 +1,25 @@
-
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:whats_up/common/widgets/custom_button_widgets.dart';
 
 import '../../../common/utils/colors.dart';
-class LogInScreen extends StatefulWidget {
+import '../../../common/utils/utils.dart';
+import '../controller/auth_controller.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+class LogInScreen extends ConsumerStatefulWidget {
   static const routeName = '/login-screen';
+
   const LogInScreen({super.key});
 
   @override
-  State<LogInScreen> createState() => _LogInScreenState();
+  ConsumerState<LogInScreen> createState() => _LogInScreenState();
 }
 
-class _LogInScreenState extends State<LogInScreen> {
+class _LogInScreenState extends ConsumerState<LogInScreen> {
   final phoneController = TextEditingController();
   Country? country;
-
 
   @override
   void dispose() {
@@ -26,12 +29,24 @@ class _LogInScreenState extends State<LogInScreen> {
 
   void pickCountry() {
     showCountryPicker(
-        context: context,
-        onSelect: (Country _country) {
-          setState(() {
-            country = _country;
-          });
+      context: context,
+      onSelect: (Country _country) {
+        setState(() {
+          country = _country;
         });
+      },
+    );
+  }
+
+  void sendPhoneNumber() {
+    String phoneNumber = phoneController.text.trim();
+    if (country != null && phoneNumber.isNotEmpty) {
+      ref
+          .read(authControllerProvider)
+          .signInWithPhone(context, '+${country!.phoneCode}$phoneNumber');
+    } else {
+      showSnackBar(context: context, content: 'Fill out all the fields');
+    }
   }
 
   @override
@@ -51,10 +66,7 @@ class _LogInScreenState extends State<LogInScreen> {
             children: [
               const Text('WhatsApp will need to verify your phone number.'),
               Gap(10),
-              TextButton(
-                onPressed: pickCountry,
-                child: const Text('Pick Country'),
-              ),
+              TextButton(onPressed: pickCountry, child: const Text('Pick Country')),
               Gap(5),
               Row(
                 children: [
@@ -64,9 +76,7 @@ class _LogInScreenState extends State<LogInScreen> {
                     width: size.width * 0.7,
                     child: TextField(
                       controller: phoneController,
-                      decoration: const InputDecoration(
-                        hintText: 'phone number',
-                      ),
+                      decoration: const InputDecoration(hintText: 'phone number'),
                     ),
                   ),
                 ],
@@ -74,10 +84,7 @@ class _LogInScreenState extends State<LogInScreen> {
               SizedBox(height: size.height * 0.6),
               SizedBox(
                 width: 90,
-                child: CustomButtonWidget(
-                  onPressed: (){},
-                  text: 'NEXT',
-                ),
+                child: CustomButtonWidget(onPressed: sendPhoneNumber, text: 'NEXT'),
               ),
             ],
           ),
@@ -86,5 +93,3 @@ class _LogInScreenState extends State<LogInScreen> {
     );
   }
 }
-
-

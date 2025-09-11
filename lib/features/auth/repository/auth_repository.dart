@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whats_up/features/auth/presentation/otp_screen.dart';
 
 import '../../../common/utils/utils.dart';
+import '../presentation/user_info_screen.dart';
 
 final authRepositoryProvider = Provider(
       (ref) => AuthRepository(
@@ -42,6 +43,27 @@ class AuthRepository {
           );
         }),
         codeAutoRetrievalTimeout: (String verificationId) {},
+      );
+    } on FirebaseAuthException catch (e) {
+      showSnackBar(context: context, content: e.message!);
+    }
+  }
+
+  void verifyOTP({
+    required BuildContext context,
+    required String verificationId,
+    required String userOTP,
+  }) async {
+    try {
+      PhoneAuthCredential credential = PhoneAuthProvider.credential(
+        verificationId: verificationId,
+        smsCode: userOTP,
+      );
+      await auth.signInWithCredential(credential);
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        UserInfoScreen.routeName,
+            (route) => false,
       );
     } on FirebaseAuthException catch (e) {
       showSnackBar(context: context, content: e.message!);

@@ -1,21 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:whats_up/common/utils/utils.dart';
 
 import '../../../common/utils/colors.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class OtpScreen extends StatefulWidget {
+import '../controller/auth_controller.dart';
+
+class OtpScreen extends ConsumerWidget {
   static const routeName = '/otp-screen';
   final String verificationId;
 
   const OtpScreen({super.key, required this.verificationId});
 
-  @override
-  State<OtpScreen> createState() => _OtpScreenState();
-}
+  void verifyOTP(WidgetRef ref, BuildContext context, String userOTP) {
+    ref.read(authControllerProvider).verifyOTP(
+      context,
+      verificationId,
+      userOTP,
+    );
+  }
 
-class _OtpScreenState extends State<OtpScreen> {
+
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,WidgetRef ref) {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -41,6 +50,11 @@ class _OtpScreenState extends State<OtpScreen> {
                 ),
                 keyboardType: TextInputType.number,
                 onChanged: (val) {
+                  if(val.length == 6){
+                    verifyOTP(ref, context, val.trim());
+                  }else{
+                    showSnackBar(context: context, content: 'OTP must be 6 digit');
+                  }
                 },
               ),
             ),

@@ -2,18 +2,20 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:gap/gap.dart';
 import '../../../common/utils/utils.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class UserInfoScreen extends StatefulWidget {
+import '../controller/auth_controller.dart';
+
+class UserInfoScreen extends ConsumerStatefulWidget {
   static const routeName = '/userinfo-screen';
 
   const UserInfoScreen({super.key});
 
   @override
-  State<UserInfoScreen> createState() => _UserInfoScreenState();
+  ConsumerState<UserInfoScreen> createState() => _UserInfoScreenState();
 }
 
-class _UserInfoScreenState extends State<UserInfoScreen> {
-
+class _UserInfoScreenState extends ConsumerState<UserInfoScreen> {
   final TextEditingController nameController = TextEditingController();
   File? image;
 
@@ -27,6 +29,15 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
     image = await pickImageFromGallery(context);
     setState(() {});
   }
+
+  void storeUserData() async {
+    String name = nameController.text.trim();
+
+    if (name.isNotEmpty) {
+      ref.read(authControllerProvider).saveUserDataToFirebase(context, name, image);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -41,25 +52,18 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                 children: [
                   image == null
                       ? const CircleAvatar(
-                    backgroundImage: NetworkImage(
-                      'https://png.pngitem.com/pimgs/s/649-6490124_katie-notopoulos-katienotopoulos-i-write-about-tech-round.png',
-                    ),
-                    radius: 64,
-                  )
-                      : CircleAvatar(
-                    backgroundImage: FileImage(
-                      image!,
-                    ),
-                    radius: 64,
-                  ),
+                          backgroundImage: NetworkImage(
+                            'https://png.pngitem.com/pimgs/s/649-6490124_katie-notopoulos-katienotopoulos-i-write-about-tech-round.png',
+                          ),
+                          radius: 64,
+                        )
+                      : CircleAvatar(backgroundImage: FileImage(image!), radius: 64),
                   Positioned(
                     bottom: -10,
                     left: 80,
                     child: IconButton(
                       onPressed: selectImage,
-                      icon: const Icon(
-                        Icons.add_a_photo,
-                      ),
+                      icon: const Icon(Icons.add_a_photo),
                     ),
                   ),
                 ],
@@ -71,17 +75,10 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                     padding: const EdgeInsets.all(20),
                     child: TextField(
                       controller: nameController,
-                      decoration: const InputDecoration(
-                        hintText: 'Enter your name',
-                      ),
+                      decoration: const InputDecoration(hintText: 'Enter your name'),
                     ),
                   ),
-                  IconButton(
-                    onPressed: (){},
-                    icon: const Icon(
-                      Icons.done,
-                    ),
-                  ),
+                  IconButton(onPressed: storeUserData, icon: const Icon(Icons.done)),
                 ],
               ),
             ],
@@ -91,5 +88,3 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
     );
   }
 }
-
-

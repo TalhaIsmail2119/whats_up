@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:gap/gap.dart';
 import '../../../common/utils/utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../domain/controller/auth_controller.dart';
 
-import '../controller/auth_controller.dart';
 
 class UserInfoScreen extends ConsumerStatefulWidget {
   static const routeName = '/userinfo-screen';

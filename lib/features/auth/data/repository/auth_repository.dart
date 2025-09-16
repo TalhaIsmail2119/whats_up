@@ -1,16 +1,14 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whats_up/features/auth/presentation/otp_screen.dart';
-
-import '../../../common/repository/firebase_storage_repository.dart';
-import '../../../common/utils/utils.dart';
-import '../../../core/screens/mobile_layout_screen.dart';
+import '../../../../common/utils/utils.dart';
+import '../../../../core/screens/mobile_layout_screen.dart';
+import '../../presentation/user_info_screen.dart';
 import '../model/user_model.dart';
-import '../presentation/user_info_screen.dart';
+
 
 final authRepositoryProvider = Provider(
       (ref) => AuthRepository(

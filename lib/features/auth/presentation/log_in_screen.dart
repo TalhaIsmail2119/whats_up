@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:whats_up/common/widgets/custom_button_widgets.dart';
-
 import '../../../common/utils/colors.dart';
 import '../../../common/utils/utils.dart';
-import '../controller/auth_controller.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../domain/controller/auth_controller.dart';
 
 class LogInScreen extends ConsumerStatefulWidget {
   static const routeName = '/login-screen';

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:whats_up/common/utils/utils.dart';
-
 import '../../../common/utils/colors.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../controller/auth_controller.dart';
+import '../domain/controller/auth_controller.dart';
 
 class OtpScreen extends ConsumerWidget {
   static const routeName = '/otp-screen';

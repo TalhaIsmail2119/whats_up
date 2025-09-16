@@ -7,9 +7,8 @@ import 'common/widgets/loader_widget.dart';
 import 'core/firebase_options.dart';
 import 'core/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'core/screens/mobile_layout_screen.dart';
-import 'features/auth/controller/auth_controller.dart';
+import 'features/auth/domain/controller/auth_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

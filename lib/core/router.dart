@@ -5,6 +5,7 @@ import 'package:whats_up/features/auth/presentation/user_info_screen.dart';
 
 import '../common/widgets/error_widget.dart';
 import '../features/auth/presentation/log_in_screen.dart';
+import '../features/contacts/presentation/screens/select_contacts_screen.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -22,6 +23,10 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case UserInfoScreen.routeName:
       return MaterialPageRoute(
         builder: (context) =>   UserInfoScreen(),
+      );
+    case SelectContactsScreen.routeName:
+      return MaterialPageRoute(
+        builder: (context) =>   SelectContactsScreen(),
       );
     default:
       return MaterialPageRoute(

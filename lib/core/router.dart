@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:whats_up/core/screens/mobile_chat_screen.dart';
 import 'package:whats_up/features/auth/presentation/otp_screen.dart';
 import 'package:whats_up/features/auth/presentation/user_info_screen.dart';
 
@@ -27,6 +28,10 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case SelectContactsScreen.routeName:
       return MaterialPageRoute(
         builder: (context) =>   SelectContactsScreen(),
+      );
+    case MobileChatScreen.routeName:
+      return MaterialPageRoute(
+        builder: (context) =>   MobileChatScreen(),
       );
     default:
       return MaterialPageRoute(

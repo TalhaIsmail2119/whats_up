@@ -1,6 +1,6 @@
 const info = [
   {
-    'name': 'Sophia Carter',
+    'name': 'Talha Ismail',
     'message': 'Let’s catch up soon!',
     'time': '8:42 pm',
     'profilePic':

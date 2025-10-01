@@ -118,6 +118,20 @@ class AuthRepository {
     }
   }
 
+  Stream<UserModel> userData(String userId) {
+    return firestore.collection('users').doc(userId).snapshots().map(
+          (event) => UserModel.fromMap(
+        event.data()!,
+      ),
+    );
+  }
+
+  // void setUserState(bool isOnline) async {
+  //   await firestore.collection('users').doc(auth.currentUser!.uid).update({
+  //     'isOnline': isOnline,
+  //   });
+  // }
+
 
   // void saveUserDataToFirebase({
   //   required String name,

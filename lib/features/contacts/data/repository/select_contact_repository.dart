@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../common/utils/utils.dart';
-import '../../../../core/screens/mobile_chat_screen.dart';
+import '../../../chat/repositories/mobile_chat_screen.dart';
 import '../../../auth/data/model/user_model.dart';
 
 final selectContactsRepositoryProvider = Provider(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/screens/mobile_chat_screen.dart';
+import '../../features/chat/repositories/mobile_chat_screen.dart';
 import '../utils/colors.dart';
 import '../utils/info.dart';
 

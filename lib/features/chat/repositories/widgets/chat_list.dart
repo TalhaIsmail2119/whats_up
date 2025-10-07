@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whats_up/common/widgets/sender_message_card.dart';
-import '../utils/info.dart';
-import 'my_message_card.dart';
+import '../../../../common/utils/info.dart';
+import '../../../../common/widgets/my_message_card.dart';
 
 class ChatList extends StatelessWidget {
   const ChatList({Key? key}) : super(key: key);

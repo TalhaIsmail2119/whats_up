@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../common/utils/colors.dart';
-import '../../features/chat/repositories/widgets/chat_list.dart';
+import '../../features/chat/presentation/widgets/chat_list.dart';
 import '../../common/widgets/contacts_list.dart';
 import '../../common/widgets/web_chat_appbar.dart';
 import '../../common/widgets/web_profile_bar.dart';

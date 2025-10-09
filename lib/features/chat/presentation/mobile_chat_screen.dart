@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whats_up/features/chat/repositories/widgets/bottom_chat_field_widget.dart';
+import 'package:whats_up/features/chat/presentation/widgets/bottom_chat_field_widget.dart';
 import '../../../common/utils/colors.dart';
 import 'widgets/chat_list.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

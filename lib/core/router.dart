@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:whats_up/features/chat/repositories/mobile_chat_screen.dart';
+import 'package:whats_up/features/chat/presentation/mobile_chat_screen.dart';
 import 'package:whats_up/features/auth/presentation/otp_screen.dart';
 import 'package:whats_up/features/auth/presentation/user_info_screen.dart';
 
